@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="section">
+
+<h2>Admin Panel - Adam Child Care Foundation</h2>
+
+<p>Use this panel to publish projects, events, and community updates.</p>
+
+<input id="title" placeholder="Project or Event Title"><br><br>
+
+<textarea id="desc" placeholder="Project description"></textarea><br><br>
+
+<input id="image" placeholder="Image URL"><br><br>
+
+<input id="video" placeholder="Video URL"><br><br>
+
+<button onclick="addPost()">Publish Project</button>
+
+</div>
+
+<script>
+
+function addPost(){
+
+let post={
+
+title:document.getElementById("title").value,
+
+desc:document.getElementById("desc").value,
+image:document.getElementById("image").value,
+video:document.getElementById("video").value
+
+};
+
+let posts = JSON.parse(localStorage.getItem("posts")) || [];
+
+posts.push(post);
+
+localStorage.setItem("posts",JSON.stringify(posts));
+
+alert("Project Posted Successfully");
+
+}
+
+</script>
+
+</body>
+</html>
