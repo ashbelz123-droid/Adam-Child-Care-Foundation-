@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Admin Login</title>
+<title>Admin Dashboard</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -14,52 +14,48 @@
 
 <body class="admin-body">
 
-<div class="login-box">
+<div class="admin-container">
 
-<h2>Admin Login</h2>
+<h1>Admin Dashboard</h1>
 
-<input id="username" placeholder="Username">
+<p>Manage website content and charity projects.</p>
 
-<input id="password" type="password" placeholder="Password">
 
-<button onclick="login()" class="publish-btn">
+<h2>Website Logo</h2>
 
-Login
+<input type="file" id="logoFile" accept="image/*">
 
+<button onclick="uploadLogo()" class="publish-btn">
+Update Logo
 </button>
 
-<p id="error"></p>
+
+<hr>
+
+
+<h2>Publish Project</h2>
+
+<input id="title" placeholder="Project Title">
+
+<textarea id="desc" placeholder="Project Description"></textarea>
+
+<label>Upload Photo</label>
+<input type="file" id="image" accept="image/*">
+
+<label>Upload Video</label>
+<input type="file" id="video" accept="video/*">
+
+<button onclick="addPost()" class="publish-btn">
+
+Publish Project
+
+</button>
 
 </div>
 
 
-<script>
-
-function login(){
-
-const user =
-document.getElementById("username").value;
-
-const pass =
-document.getElementById("password").value;
-
-
-/* SECRET LOGIN */
-
-if(user === "admin" && pass === "adam123"){
-
-window.location = "admin.html";
-
-}else{
-
-document.getElementById("error").innerText =
-"Wrong login details";
-
-}
-
-}
-
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
