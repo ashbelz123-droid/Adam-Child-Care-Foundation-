@@ -1,24 +1,97 @@
 const SUPABASE_URL = "https://plrzyhtkosbgztpaudoz.supabase.co";
 
-const SUPABASE_KEY = "sb_publishable_iCAQVtvq6NqndBcS2ktKQA_im69KCae";
+const SUPABASE_KEY =
+"sb_publishable_iCAQVtvq6NqndBcS2ktKQA_im69KCae";
 
-const supabase = window.supabase.createClient(
+const supabase =
+window.supabase.createClient(
 SUPABASE_URL,
 SUPABASE_KEY
 );
 
 
-/* ADD PROJECT */
+
+/* =======================
+UPLOAD WEBSITE LOGO
+======================= */
+
+async function uploadLogo(){
+
+const file =
+document.getElementById("logoFile").files[0];
+
+if(!file){
+alert("Please choose logo");
+return;
+}
+
+const fileName = "logo/logo.png";
+
+const {data,error} =
+await supabase.storage
+.from("media")
+.upload(fileName,file,{upsert:true});
+
+if(error){
+
+alert("Upload failed");
+
+}else{
+
+const logoURL =
+SUPABASE_URL +
+"/storage/v1/object/public/media/" +
+fileName;
+
+localStorage.setItem("siteLogo",logoURL);
+
+alert("Logo Updated");
+
+location.reload();
+
+}
+
+}
+
+
+
+/* =======================
+LOAD LOGO
+======================= */
+
+const savedLogo =
+localStorage.getItem("siteLogo");
+
+if(savedLogo){
+
+const logo =
+document.getElementById("siteLogo");
+
+if(logo){
+logo.src = savedLogo;
+}
+
+}
+
+
+
+/* =======================
+ADD PROJECT
+======================= */
 
 async function addPost(){
 
-const title = document.getElementById("title").value;
+const title =
+document.getElementById("title").value;
 
-const description = document.getElementById("desc").value;
+const description =
+document.getElementById("desc").value;
 
-const imageFile = document.getElementById("image").files[0];
+const imageFile =
+document.getElementById("image").files[0];
 
-const videoFile = document.getElementById("video").files[0];
+const videoFile =
+document.getElementById("video").files[0];
 
 let imageUrl="";
 let videoUrl="";
@@ -29,15 +102,17 @@ if(imageFile){
 const imageName =
 "images/"+Date.now()+"_"+imageFile.name;
 
-const {data,error}=await supabase.storage
+const {data,error} =
+await supabase.storage
 .from("media")
 .upload(imageName,imageFile);
 
 if(!error){
 
-imageUrl=
-SUPABASE_URL+
-"/storage/v1/object/public/media/"+imageName;
+imageUrl =
+SUPABASE_URL +
+"/storage/v1/object/public/media/" +
+imageName;
 
 }
 
@@ -46,18 +121,20 @@ SUPABASE_URL+
 
 if(videoFile){
 
-const videoName=
+const videoName =
 "videos/"+Date.now()+"_"+videoFile.name;
 
-const {data,error}=await supabase.storage
+const {data,error} =
+await supabase.storage
 .from("media")
 .upload(videoName,videoFile);
 
 if(!error){
 
-videoUrl=
-SUPABASE_URL+
-"/storage/v1/object/public/media/"+videoName;
+videoUrl =
+SUPABASE_URL +
+"/storage/v1/object/public/media/" +
+videoName;
 
 }
 
@@ -81,16 +158,19 @@ alert("Project Published");
 
 
 
-/* SHOW PROJECTS */
+/* =======================
+SHOW PROJECTS
+======================= */
 
 async function showPosts(){
 
-const {data,error}=await supabase
+const {data,error} =
+await supabase
 .from("posts")
 .select("*")
 .order("id",{ascending:false});
 
-const container=
+const container =
 document.getElementById("postList");
 
 if(!container) return;
