@@ -3,36 +3,93 @@
 
 <head>
 
-<title>Admin - Adam Child Care Foundation</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Admin Dashboard | Adam Child Care Foundation</title>
 
 <link rel="stylesheet" href="style.css">
 
 </head>
 
-<body>
+<body class="admin-body">
 
-<div class="section">
+<div class="admin-container">
 
-<h2>Admin Panel - Publish Project</h2>
+<h1>Admin Dashboard</h1>
 
-<p>Add photos or videos of events, charity activities or programs.</p>
+<p>Publish new charity project, event, photo or video.</p>
 
-<input id="title" placeholder="Project Title">
 
-<textarea id="desc" placeholder="Project Description"></textarea>
+<div class="form-box">
+
+<label>Project Title</label>
+<input id="title" placeholder="Example: School Support Program">
+
+
+<label>Project Description</label>
+<textarea id="desc" placeholder="Write details about the project"></textarea>
+
 
 <label>Upload Photo</label>
-<input type="file" id="image" accept="image/*">
+<input type="file" id="image" accept="image/*" onchange="previewImage()">
+
+<img id="imagePreview" class="preview">
+
 
 <label>Upload Video</label>
-<input type="file" id="video" accept="video/*">
+<input type="file" id="video" accept="video/*" onchange="previewVideo()">
 
-<button onclick="addPost()">Publish Project</button>
+<video id="videoPreview" controls class="preview"></video>
+
+
+<button onclick="addPost()" class="publish-btn">
+
+Publish Project
+
+</button>
 
 </div>
 
+</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="script.js"></script>
+
+
+<script>
+
+function previewImage(){
+
+const file =
+document.getElementById("image").files[0];
+
+const preview =
+document.getElementById("imagePreview");
+
+preview.src = URL.createObjectURL(file);
+
+preview.style.display="block";
+
+}
+
+
+function previewVideo(){
+
+const file =
+document.getElementById("video").files[0];
+
+const preview =
+document.getElementById("videoPreview");
+
+preview.src = URL.createObjectURL(file);
+
+preview.style.display="block";
+
+}
+
+</script>
 
 </body>
 </html>
