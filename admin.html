@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Admin Dashboard | Adam Child Care Foundation</title>
+<title>Admin Login</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -14,78 +14,48 @@
 
 <body class="admin-body">
 
-<div class="admin-container">
+<div class="login-box">
 
-<h1>Admin Dashboard</h1>
+<h2>Admin Login</h2>
 
-<p>Publish new charity project, event, photo or video.</p>
+<input id="username" placeholder="Username">
 
+<input id="password" type="password" placeholder="Password">
 
-<div class="form-box">
+<button onclick="login()" class="publish-btn">
 
-<label>Project Title</label>
-<input id="title" placeholder="Example: School Support Program">
-
-
-<label>Project Description</label>
-<textarea id="desc" placeholder="Write details about the project"></textarea>
-
-
-<label>Upload Photo</label>
-<input type="file" id="image" accept="image/*" onchange="previewImage()">
-
-<img id="imagePreview" class="preview">
-
-
-<label>Upload Video</label>
-<input type="file" id="video" accept="video/*" onchange="previewVideo()">
-
-<video id="videoPreview" controls class="preview"></video>
-
-
-<button onclick="addPost()" class="publish-btn">
-
-Publish Project
+Login
 
 </button>
 
-</div>
+<p id="error"></p>
 
 </div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="script.js"></script>
 
 
 <script>
 
-function previewImage(){
+function login(){
 
-const file =
-document.getElementById("image").files[0];
+const user =
+document.getElementById("username").value;
 
-const preview =
-document.getElementById("imagePreview");
+const pass =
+document.getElementById("password").value;
 
-preview.src = URL.createObjectURL(file);
 
-preview.style.display="block";
+/* SECRET LOGIN */
+
+if(user === "admin" && pass === "adam123"){
+
+window.location = "admin.html";
+
+}else{
+
+document.getElementById("error").innerText =
+"Wrong login details";
 
 }
-
-
-function previewVideo(){
-
-const file =
-document.getElementById("video").files[0];
-
-const preview =
-document.getElementById("videoPreview");
-
-preview.src = URL.createObjectURL(file);
-
-preview.style.display="block";
 
 }
 
