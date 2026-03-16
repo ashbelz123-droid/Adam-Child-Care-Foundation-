@@ -1,10 +1,71 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Dashboard</title><link rel="stylesheet" href="css/style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script></head><body class="admin-body"><header class="admin-header"><h1>Admin Dashboard</h1><p>Adam Child Care Foundation Uganda Ltd</p></header><div class="admin-container"><div class="admin-card"><h2>Add Child</h2><input id="child_name" placeholder="Child Name"><input id="child_age" placeholder="Age"><input id="child_gender" placeholder="Gender"><input id="child_school" placeholder="School"><input id="child_dream" placeholder="Dream"><textarea id="child_story" placeholder="Story"></textarea><textarea id="child_needs" placeholder="Needs"></textarea><button onclick="addChild()">Save Child</button>
+<!DOCTYPE html>
+<html>
 
-</div><div class="admin-card"><h2>Add Program</h2><input id="program_title" placeholder="Program Title"><textarea id="program_desc" placeholder="Program Description"></textarea><button onclick="addProgram()">Save Program</button>
+<head>
 
-</div><div class="admin-card"><h2>Upload Gallery</h2><input type="file" id="gallery_file"><input id="gallery_caption" placeholder="Caption"><button onclick="uploadGallery()">Upload</button>
+<title>Admin Dashboard</title>
 
-</div><div class="admin-card"><h2>Add Event</h2><input id="event_title" placeholder="Event Title"><textarea id="event_desc"></textarea><input type="file" id="event_media"><button onclick="addEvent()">Add Event</button>
+<link rel="stylesheet" href="css/style.css">
 
-</div></div><script src="js/admin.js"></script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+</head>
+
+<body>
+
+<header>
+<h1>Foundation Admin Panel</h1>
+</header>
+
+<div class="admin-container">
+
+<div class="admin-card">
+
+<h2>Add Child</h2>
+
+<input id="child_name" placeholder="Name">
+<input id="child_age" placeholder="Age">
+<input id="child_gender" placeholder="Gender">
+<input id="child_school" placeholder="School">
+<input id="child_dream" placeholder="Dream">
+
+<textarea id="child_story" placeholder="Story"></textarea>
+<textarea id="child_needs" placeholder="Needs"></textarea>
+
+<input type="file" id="child_photo">
+
+<button onclick="addChild()">Save Child</button>
+
+</div>
+
+
+<div class="admin-card">
+
+<h2>Add Program</h2>
+
+<input id="program_title" placeholder="Program Title">
+<textarea id="program_desc" placeholder="Program Description"></textarea>
+
+<button onclick="addProgram()">Save Program</button>
+
+</div>
+
+
+<div class="admin-card">
+
+<h2>Upload Gallery</h2>
+
+<input type="file" id="gallery_file">
+<input id="gallery_caption" placeholder="Caption">
+
+<button onclick="uploadGallery()">Upload</button>
+
+</div>
+
+</div>
+
+<script src="js/admin.js"></script>
+
+</body>
+
+</html>
