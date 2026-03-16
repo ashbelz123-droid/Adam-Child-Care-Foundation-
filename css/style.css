@@ -47,31 +47,77 @@ text-decoration:underline;
 
 /* HERO */
 
-.hero{
-background:#eaf1ff;
-text-align:center;
-padding:70px 20px;
+.hero-slider{
+position:relative;
+height:500px;
+overflow:hidden;
 }
 
-.hero h2{
-font-size:32px;
-margin-bottom:10px;
-color:#0A4FA3;
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+opacity:0;
+transition:opacity 1s;
 }
 
-.hero p{
-max-width:700px;
-margin:auto;
-margin-bottom:25px;
+.slide.active{
+opacity:1;
 }
 
-.donate-btn{
-background:#25D366;
+.slide img{
+width:100%;
+height:500px;
+object-fit:cover;
+}
+
+.hero-text{
+position:absolute;
+bottom:40px;
+left:40px;
 color:white;
-padding:14px 28px;
+background:rgba(0,0,0,0.5);
+padding:20px;
+border-radius:8px;
+}
+
+.stats{
+display:flex;
+justify-content:space-around;
+padding:40px;
+background:#f4f4f4;
+}
+
+.stat{
+text-align:center;
+}
+
+.stat h3{
+font-size:40px;
+color:#0099ff;
+}
+
+.program-preview .cards{
+display:flex;
+gap:20px;
+padding:30px;
+}
+
+.donate{
+text-align:center;
+padding:50px;
+background:#0099ff;
+color:white;
+}
+
+.donate button{
+padding:12px 30px;
+font-size:18px;
+background:white;
+color:#0099ff;
+border:none;
+cursor:pointer;
 border-radius:6px;
-text-decoration:none;
-font-weight:bold;
 }
 
 /* FOUNDER */
