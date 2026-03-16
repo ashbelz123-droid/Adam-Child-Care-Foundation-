@@ -1,36 +1,9 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Volunteer | Adam Child Care Foundation</title><link rel="stylesheet" href="css/style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script></head><body><header><div class="header-container"><img src="images/logo.png" class="logo"><h1>Adam Child Care Foundation Uganda Ltd</h1><nav><a href="index.html">Home</a>
+<!DOCTYPE html><html><head><title>Volunteer | Adam Child Care Foundation</title><link rel="stylesheet" href="css/style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script></head><body><header><nav><h2 style="color:white">Volunteer</h2><div>
+<a href="index.html">Home</a>
 <a href="about.html">About</a>
-<a href="children.html">Children</a>
-<a href="programs.html">Programs</a>
-<a href="gallery.html">Gallery</a>
-<a href="volunteer.html">Volunteer</a>
+</div></nav></header><section class="section"><h1>Become a Volunteer</h1><p>
+Join us in making a difference in the lives of vulnerable children.
+Your time, skills and compassion can change lives.
+</p><div class="volunteer-box"><input id="name" placeholder="Full Name"><input id="email" placeholder="Email"><input id="phone" placeholder="Phone"><input id="country" placeholder="Country"><textarea id="message" placeholder="Why do you want to volunteer?"></textarea><button onclick="registerVolunteer()">Submit Application</button>
 
-</nav></div></header><section class="hero-small"><h2>Become a Volunteer</h2><p>Join us and help transform children's lives.</p></section><section class="volunteer-section"><form class="volunteer-form"><input id="name" placeholder="Full Name"><input id="email" placeholder="Email"><input id="phone" placeholder="Phone Number"><input id="country" placeholder="Country"><textarea id="message" placeholder="Why do you want to volunteer?"></textarea><button type="button" onclick="registerVolunteer()">Register as Volunteer
-
-</button></form></section><footer><p>Adam Child Care Foundation Uganda Ltd</p><p>Email: adamcarefoundation@gmail.com</p><p>WhatsApp: +256 761 544014</p></footer><a href="https://wa.me/256761544014" class="whatsapp-float">💬
-
-</a><script>
-
-const supabase = supabase.createClient(
-"https://plrzyhtkosbgztpaudoz.supabase.co",
-"YOUR_PUBLIC_KEY"
-)
-
-async function registerVolunteer(){
-
-const name=document.getElementById("name").value
-const email=document.getElementById("email").value
-const phone=document.getElementById("phone").value
-const country=document.getElementById("country").value
-const message=document.getElementById("message").value
-
-await supabase.from("volunteers").insert([
-{name,email,phone,country,message}
-])
-
-alert("Thank you for registering as a volunteer!")
-
-}
-
-</script></body></html>
+</div></section><footer><p>Adam Child Care Foundation Uganda Ltd</p><p>adamcarefoundation@gmail.com</p><p>WhatsApp: +256 761 544014</p></footer><script src="js/volunteer.js"></script></body></html>
