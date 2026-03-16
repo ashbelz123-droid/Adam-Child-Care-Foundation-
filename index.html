@@ -8,56 +8,61 @@
 <a href="admin-login.html" class="admin-link">Admin</a>
 
 </nav><div class="menu-btn" onclick="toggleMenu()">☰</div></div></header><section class="hero"><div class="hero-overlay"><h1>Adam Child Care Foundation Uganda Ltd</h1><p>
-Giving hope, love and opportunity to vulnerable children in Uganda.
-</p><br><button onclick="window.open('https://wa.me/256761544014?text=Hello I would like to support Adam Child Care Foundation')">Support / Donate
+Supporting vulnerable children with love, education and hope for a brighter future.
+</p><br><button onclick="window.open('https://wa.me/256761544014?text=Hello I would like to support Adam Child Care Foundation')">❤️ Support / Donate
 
-</button></div></section><section class="section"><h2>Our Mission</h2><p>Adam Child Care Foundation Uganda Ltd is a non-profit organization committed to transforming the lives of vulnerable children through care, education, support and hope.
+</button></div></section><section class="section"><h2>Our Mission</h2><p>Adam Child Care Foundation Uganda Ltd is a non-profit organization dedicated to transforming the lives of vulnerable children through care, education, protection and empowerment.
 
-We believe every child deserves a safe home, quality education and a chance to dream for a better future.
+We believe every child deserves safety, love and the opportunity to dream for a better future.
 
-</p></section><section class="section"><h2>Founder</h2><div class="card"><h3>Mukwege Adam</h3><p>"Every child deserves love, dignity and a future filled with hope. Our mission is to protect, support and empower children who need it most."
+</p></section><section class="section"><h2>Founder</h2><div class="card"><h3>Mukwege Adam</h3><p>"Every child deserves love, dignity and opportunity. Our mission is to give hope and a future to children who need it most."
 
-</p></div></section><section class="section"><h2>Our Programs</h2><div class="cards" id="programs-container"><div class="card"><h3>Child Education</h3><p>Providing school support, materials and mentorship to help children achieve their dreams.
+</p></div></section><section class="section"><h2>Our Programs</h2><div class="cards" id="programs-container"><div class="card"><h3>Education Support</h3><p>
+Providing school fees support, scholastic materials and mentorship programs.
+</p></div><div class="card"><h3>Food & Nutrition</h3><p>
+Ensuring children receive healthy meals and proper nutrition.
+</p></div><div class="card"><h3>Community Outreach</h3><p>
+Working with communities to create safe and supportive environments.
+</p></div></div></section><section class="section"><h2>Our Events & Activities</h2><p>Moments from our outreach programs and activities.</p><div class="slider"><div class="slides" id="eventSlides"><img src="images/event1.jpg">
+<img src="images/event2.jpg">
+<img src="images/event3.jpg">
+<img src="images/event4.jpg"></div></div></section><section class="section"><h2>Children We Support</h2><p>Meet some of the children whose lives are being transformed.</p><div class="cards" id="children-container"></div></section><section class="section"><h2>Gallery</h2><p>Photos from our programs and community activities.</p><div class="cards" id="gallery-container"></div></section><section class="section"><h2>Get Involved</h2><div class="cards"><div class="card"><h3>Volunteer</h3><p>Become part of our mission and change lives.</p><br><a href="volunteer.html"><button>Become a Volunteer</button>
 
-</p></div><div class="card"><h3>Food Support</h3><p>Ensuring children receive nutritious meals and basic needs for healthy growth.
+</a></div><div class="card"><h3>Support Our Work</h3><p>Your support helps provide education, food and care for children.</p><br><button onclick="window.open('https://wa.me/256761544014')">Donate Now
 
-</p></div><div class="card"><h3>Community Care</h3><p>Working with communities to create safe environments for vulnerable children.
-
-</p></div></div></section>/* EVENT SLIDER */
-
-.slider{
-
-width:100%;
-max-width:900px;
-margin:auto;
-overflow:hidden;
-border-radius:12px;
-box-shadow:0 6px 20px rgba(0,0,0,0.2);
-
-}
-
-.slides{
-
-display:flex;
-transition:transform 1s ease;
-
-}
-
-.slides img{
-
-width:100%;
-flex-shrink:0;
-height:400px;
-object-fit:cover;
-
-}<section class="section"><h2>Children We Support</h2><p>Meet some of the children whose lives are being transformed.</p><div class="cards" id="children-container"><!-- children from database will load here --></div></section><section class="section"><h2>Gallery</h2><p>Moments from our activities and community programs.</p><div class="cards" id="gallery-container"></div></section><section class="section"><h2>Get Involved</h2><div class="cards"><div class="card"><h3>Volunteer</h3><p>Join our mission and make a difference in children's lives.</p><br><a href="volunteer.html"><button>Become a Volunteer</button>
-
-</a></div><div class="card"><h3>Support Us</h3><p>Your support helps provide education, food and shelter.</p><br><button onclick="window.open('https://wa.me/256761544014')">Donate Now
-
-</button></div></div></section><footer><h3>Adam Child Care Foundation Uganda Ltd</h3><p>Bwikomba II, Mugiti Sub-County, Budaka, Mbale, Uganda</p><p>Email: adamcarefoundation@gmail.com</p><p>Phone / WhatsApp: +256 761 544014</p><p>Helpline: +256 741 600425</p><p>Facebook: Adam Child Care Foundation</p></footer><a class="whatsapp"
+</button></div></div></section><footer><h3>Adam Child Care Foundation Uganda Ltd</h3><p>Bwikomba II, Mugiti Sub-County, Budaka, Mbale, Uganda</p><p>Email: adamcarefoundation@gmail.com</p><p>WhatsApp: +256 761 544014</p><p>Helpline: +256 741 600425</p><p>Facebook: Adam Child Care Foundation</p></footer><a class="whatsapp"
 href="https://wa.me/256761544014"
 target="_blank">
 
 💬
 
-</a><script src="js/navigation.js"></script><script src="js/script.js"></script></body></html>
+</a><div class="donate-float"
+onclick="window.open('https://wa.me/256761544014?text=Hello I would like to support Adam Child Care Foundation')">❤️ Support Us
+
+</div><script src="js/navigation.js"></script><script src="js/script.js"></script><script src="js/animation.js"></script><script>
+
+/* EVENT SLIDER */
+
+let slideIndex=0
+
+function slideEvents(){
+
+const slides=document.getElementById("eventSlides")
+
+if(!slides) return
+
+const total=slides.children.length
+
+slideIndex++
+
+if(slideIndex>=total){
+slideIndex=0
+}
+
+slides.style.transform=`translateX(-${slideIndex*100}%)`
+
+}
+
+setInterval(slideEvents,4000)
+
+</script></body></html>
