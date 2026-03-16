@@ -1,211 +1,112 @@
-const SUPABASE_URL = "https://plrzyhtkosbgztpaudoz.supabase.co";
+/* SUPABASE CONNECTION */
 
-const SUPABASE_KEY =
-"sb_publishable_iCAQVtvq6NqndBcS2ktKQA_im69KCae";
+const SUPABASE_URL = "https://plrzyhtkosbgztpaudoz.supabase.co"
 
-const supabase =
-window.supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
-);
+const SUPABASE_KEY = "sb_publishable_iCAQVtvq6NqndBcS2ktKQA_im69KCae"
 
+const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
 
+/* LOAD CHILDREN */
 
-/* =======================
-UPLOAD WEBSITE LOGO
-======================= */
+async function loadChildren(){
 
-async function uploadLogo(){
+const container = document.getElementById("children-container")
 
-const file =
-document.getElementById("logoFile").files[0];
+if(!container) return
 
-if(!file){
-alert("Please choose logo");
-return;
-}
-
-const fileName = "logo/logo.png";
-
-const {data,error} =
-await supabase.storage
-.from("media")
-.upload(fileName,file,{upsert:true});
-
-if(error){
-
-alert("Upload failed");
-
-}else{
-
-const logoURL =
-SUPABASE_URL +
-"/storage/v1/object/public/media/" +
-fileName;
-
-localStorage.setItem("siteLogo",logoURL);
-
-alert("Logo Updated");
-
-location.reload();
-
-}
-
-}
-
-
-
-/* =======================
-LOAD LOGO
-======================= */
-
-const savedLogo =
-localStorage.getItem("siteLogo");
-
-if(savedLogo){
-
-const logo =
-document.getElementById("siteLogo");
-
-if(logo){
-logo.src = savedLogo;
-}
-
-}
-
-
-
-/* =======================
-ADD PROJECT
-======================= */
-
-async function addPost(){
-
-const title =
-document.getElementById("title").value;
-
-const description =
-document.getElementById("desc").value;
-
-const imageFile =
-document.getElementById("image").files[0];
-
-const videoFile =
-document.getElementById("video").files[0];
-
-let imageUrl="";
-let videoUrl="";
-
-
-if(imageFile){
-
-const imageName =
-"images/"+Date.now()+"_"+imageFile.name;
-
-const {data,error} =
-await supabase.storage
-.from("media")
-.upload(imageName,imageFile);
-
-if(!error){
-
-imageUrl =
-SUPABASE_URL +
-"/storage/v1/object/public/media/" +
-imageName;
-
-}
-
-}
-
-
-if(videoFile){
-
-const videoName =
-"videos/"+Date.now()+"_"+videoFile.name;
-
-const {data,error} =
-await supabase.storage
-.from("media")
-.upload(videoName,videoFile);
-
-if(!error){
-
-videoUrl =
-SUPABASE_URL +
-"/storage/v1/object/public/media/" +
-videoName;
-
-}
-
-}
-
-
-await supabase
-.from("posts")
-.insert([
-{
-title:title,
-description:description,
-image:imageUrl,
-video:videoUrl
-}
-]);
-
-alert("Project Published");
-
-}
-
-
-
-/* =======================
-SHOW PROJECTS
-======================= */
-
-async function showPosts(){
-
-const {data,error} =
-await supabase
-.from("posts")
+const { data } = await supabaseClient
+.from("children")
 .select("*")
-.order("id",{ascending:false});
+.order("created_at", {ascending:false})
 
-const container =
-document.getElementById("postList");
+container.innerHTML=""
 
-if(!container) return;
+data.forEach(child=>{
 
-container.innerHTML="";
+const card = document.createElement("div")
 
-data.forEach(post=>{
+card.className="child-card"
 
-container.innerHTML+=`
+card.innerHTML=`
 
-<div class="card">
+<img src="${child.photo || 'https://via.placeholder.com/300'}"><h3>${child.name}</h3><p>Age: ${child.age}</p><p>${child.school || ""}</p><p>${child.dream || ""}</p><button onclick="supportChild()">Support Child</button>
 
-<h3>${post.title}</h3>
+`
 
-<p>${post.description}</p>
+container.appendChild(card)
 
-<img src="${post.image}">
-
-<video controls>
-<source src="${post.video}">
-</video>
-
-<a class="donate-btn"
-href="https://wa.me/256740421134">
-
-Donate via WhatsApp
-
-</a>
-
-</div>
-
-`;
-
-});
+})
 
 }
 
-showPosts();
+/* LOAD PROGRAMS */
+
+async function loadPrograms(){
+
+const container=document.getElementById("programs-container")
+
+if(!container) return
+
+const { data } = await supabaseClient
+.from("programs")
+.select("*")
+.order("created_at",{ascending:false})
+
+data.forEach(program=>{
+
+const card=document.createElement("div")
+
+card.className="card"
+
+card.innerHTML=`
+
+<h3>${program.title}</h3><p>${program.description}</p>`
+
+container.appendChild(card)
+
+})
+
+}
+
+/* LOAD GALLERY */
+
+async function loadGallery(){
+
+const container=document.getElementById("gallery-container")
+
+if(!container) return
+
+const { data } = await supabaseClient
+.from("gallery")
+.select("*")
+.order("created_at",{ascending:false})
+
+data.forEach(item=>{
+
+const card=document.createElement("div")
+
+card.className="child-card"
+
+card.innerHTML=`
+
+<img src="${item.image}"><p>${item.caption || ""}</p>`
+
+container.appendChild(card)
+
+})
+
+}
+
+/* SUPPORT CHILD */
+
+function supportChild(){
+
+window.open("https://wa.me/256761544014?text=Hello I would like to support a child at Adam Child Care Foundation")
+
+}
+
+/* PAGE LOAD */
+
+loadChildren()
+loadPrograms()
+loadGallery()
