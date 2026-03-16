@@ -1,61 +1,12 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Dashboard | Adam Child Care Foundation Uganda Ltd</title><link rel="stylesheet" href="css/style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script></head><body><header><div class="header-container"><h1>Admin Dashboard</h1></div></header><section class="children"><h2>Add Child</h2><div class="card"><input id="child_name" placeholder="Child Name"><input id="child_age" placeholder="Age"><input id="child_gender" placeholder="Gender"><input id="child_school" placeholder="School"><input id="child_dream" placeholder="Dream"><textarea id="child_story" placeholder="Child Story"></textarea><textarea id="child_needs" placeholder="Child Needs"></textarea><button onclick="addChild()">Add Child</button>
 
-<head>
+</div></section><section class="children"><h2>Add Program</h2><div class="card"><input id="program_title" placeholder="Program Title"><textarea id="program_desc" placeholder="Program Description"></textarea><button onclick="addProgram()">Add Program</button>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+</div></section><section class="children"><h2>Upload Gallery Media</h2><div class="card"><input type="file" id="gallery_file"><input id="gallery_caption" placeholder="Caption"><button onclick="uploadGallery()">Upload</button>
 
-<title>Admin Dashboard</title>
+</div></section><section class="children"><h2>Add Event</h2><div class="card"><input id="event_title" placeholder="Event Title"><textarea id="event_desc" placeholder="Event Description"></textarea><input type="file" id="event_media"><button onclick="addEvent()">Add Event</button>
 
-<link rel="stylesheet" href="style.css">
+</div></section><section class="children"><h2>Upload Certificate / Document (PDF)</h2><div class="card"><input type="file" id="doc_file"><input id="doc_title" placeholder="Document Title"><button onclick="uploadDocument()">Upload PDF</button>
 
-</head>
-
-<body class="admin-body">
-
-<div class="admin-container">
-
-<h1>Admin Dashboard</h1>
-
-<p>Manage website content and charity projects.</p>
-
-
-<h2>Website Logo</h2>
-
-<input type="file" id="logoFile" accept="image/*">
-
-<button onclick="uploadLogo()" class="publish-btn">
-Update Logo
-</button>
-
-
-<hr>
-
-
-<h2>Publish Project</h2>
-
-<input id="title" placeholder="Project Title">
-
-<textarea id="desc" placeholder="Project Description"></textarea>
-
-<label>Upload Photo</label>
-<input type="file" id="image" accept="image/*">
-
-<label>Upload Video</label>
-<input type="file" id="video" accept="video/*">
-
-<button onclick="addPost()" class="publish-btn">
-
-Publish Project
-
-</button>
-
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="script.js"></script>
-
-</body>
-</html>
+</div></section><footer><p>Adam Child Care Foundation Uganda Ltd</p></footer><script src="js/admin.js"></script></body></html>
