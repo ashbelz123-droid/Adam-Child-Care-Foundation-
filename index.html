@@ -1,83 +1,36 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Adam Child Care Foundation Uganda Ltd</title><link rel="stylesheet" href="css/style.css"></head><body><header><div class="header-container"><img src="images/logo.svg" class="logo"><nav><a href="index.html">Home</a>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Adam Child Care Foundation Uganda Ltd</title><link rel="stylesheet" href="css/style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script></head><body><header class="navbar"><div class="nav-container"><img src="images/logo.svg" class="logo"><nav id="navMenu"><a href="index.html">Home</a>
 <a href="about.html">About</a>
 <a href="children.html">Children</a>
 <a href="programs.html">Programs</a>
 <a href="gallery.html">Gallery</a>
 <a href="volunteer.html">Volunteer</a>
+<a href="admin-login.html" class="admin-link">Admin</a>
 
-<section class="hero-slider"><div class="slide active">
-<img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d">
-<div class="hero-text">
-<h1>Giving Hope to Vulnerable Children</h1>
-<p>Every child deserves love, education and opportunity.</p>
-</div>
-</div><div class="slide">
-<img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
-<div class="hero-text">
-<h1>Together We Can Change Lives</h1>
-<p>Your support helps children build a better future.</p>
-</div>
-</div><div class="slide">
-<img src="https://images.unsplash.com/photo-1511895426328-dc8714191300">
-<div class="hero-text">
-<h1>Support Education</h1>
-<p>Education opens the door to a brighter tomorrow.</p>
-</div>
-</div></section>
-</p><button onclick="window.open('https://wa.me/256761544014')">
-Donate / Support
-</button></div></section><section class="section"><h2>Our Mission</h2><p>To provide love, care, protection and educational opportunities
-to vulnerable children so they can grow into responsible
-and empowered adults.
+</nav><div class="menu-btn" onclick="toggleMenu()">☰</div></div></header><section class="hero"><div class="hero-overlay"><h1>Adam Child Care Foundation Uganda Ltd</h1><p>
+Giving hope, love and opportunity to vulnerable children in Uganda.
+</p><br><button onclick="window.open('https://wa.me/256761544014?text=Hello I would like to support Adam Child Care Foundation')">Support / Donate
 
-</p></section><section class="section"><h2>Our Programs</h2><div class="cards"><div class="card">
-<h3>Education Support</h3>
-<p>Helping children attend school and achieve their dreams.</p>
-</div><div class="card">
-<h3>Health & Welfare</h3>
-<p>Providing care, nutrition and medical support.</p>
-</div><div class="card">
-<h3>Community Development</h3>
-<p>Empowering communities to support children.</p>
-</div></div></section><section class="stats"><div class="stat">
-<h2 class="counter" data-target="120">0</h2>
-<p>Children Supported</p>
-</div><div class="stat">
-<h2 class="counter" data-target="35">0</h2>
-<p>Volunteers</p>
-</div><div class="stat">
-<h2 class="counter" data-target="12">0</h2>
-<p>Programs</p>
-<section class="section"><h2>Children Stories</h2><div class="cards"><div class="card">
-<h3>Sarah</h3>
-<p>
-Sarah once struggled to attend school.
-Today she dreams of becoming a nurse
-to help her community.
-</p>
-</div><div class="card">
-<h3>David</h3>
-<p>
-David joined the foundation after losing
-his parents. With support he now attends
-school and hopes to become a teacher.
-</p>
-</div><div class="card">
-<h3>Grace</h3>
-<p>
-Grace loves reading and wants to become
-a doctor to save lives in her village.
-</p>
-</div></div></section></div></section><section class="founder"><h2>Founder</h2><p>Mukwege Adam founded Adam Child Care Foundation with a vision
-to give hope to children who lack basic needs such as education,
-care, and protection.
+</button></div></section><section class="section"><h2>Our Mission</h2><p>Adam Child Care Foundation Uganda Ltd is a non-profit organization committed to transforming the lives of vulnerable children through care, education, support and hope.
 
-The foundation believes every child deserves love,
-opportunity, and a brighter future.
+We believe every child deserves a safe home, quality education and a chance to dream for a better future.
 
-</p></section><section class="donate"><h2>Support Our Work</h2><p>Your support can transform a child's life.</p><button onclick="window.open('https://wa.me/256761544014')">
-Donate via WhatsApp
-</button></section><footer><p>Adam Child Care Foundation Uganda Ltd</p><p>Bwikomba II, Mugiti Sub-County, Budaka, Uganda</p><p>Email: adamcarefoundation@gmail.com</p><p>WhatsApp: +256 761 544014</p></footer><a href="https://wa.me/256761544014" class="whatsapp-float">
+</p></section><section class="section"><h2>Founder</h2><div class="card"><h3>Mukwege Adam</h3><p>"Every child deserves love, dignity and a future filled with hope. Our mission is to protect, support and empower children who need it most."
+
+</p></div></section><section class="section"><h2>Our Programs</h2><div class="cards" id="programs-container"><div class="card"><h3>Child Education</h3><p>Providing school support, materials and mentorship to help children achieve their dreams.
+
+</p></div><div class="card"><h3>Food Support</h3><p>Ensuring children receive nutritious meals and basic needs for healthy growth.
+
+</p></div><div class="card"><h3>Community Care</h3><p>Working with communities to create safe environments for vulnerable children.
+
+</p></div></div></section><section class="section"><h2>Children We Support</h2><p>Meet some of the children whose lives are being transformed.</p><div class="cards" id="children-container"><!-- children from database will load here --></div></section><section class="section"><h2>Gallery</h2><p>Moments from our activities and community programs.</p><div class="cards" id="gallery-container"></div></section><section class="section"><h2>Get Involved</h2><div class="cards"><div class="card"><h3>Volunteer</h3><p>Join our mission and make a difference in children's lives.</p><br><a href="volunteer.html"><button>Become a Volunteer</button>
+
+</a></div><div class="card"><h3>Support Us</h3><p>Your support helps provide education, food and shelter.</p><br><button onclick="window.open('https://wa.me/256761544014')">Donate Now
+
+</button></div></div></section><footer><h3>Adam Child Care Foundation Uganda Ltd</h3><p>Bwikomba II, Mugiti Sub-County, Budaka, Mbale, Uganda</p><p>Email: adamcarefoundation@gmail.com</p><p>Phone / WhatsApp: +256 761 544014</p><p>Helpline: +256 741 600425</p><p>Facebook: Adam Child Care Foundation</p></footer><a class="whatsapp"
+href="https://wa.me/256761544014"
+target="_blank">
+
 💬
-</a><script src="js/counter.js"></script><script src="js/slider.js"></script></body></html>
+
+</a><script src="js/navigation.js"></script><script src="js/script.js"></script></body></html>
