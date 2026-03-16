@@ -1,50 +1,40 @@
-const SUPABASE_URL =
-"https://plrzyhtkosbgztpaudoz.supabase.co"
-
-const SUPABASE_KEY =
+const supabaseClient = supabase.createClient(
+"https://plrzyhtkosbgztpaudoz.supabase.co",
 "sb_publishable_iCAQVtvq6NqndBcS2ktKQA_im69KCae"
-
-const supabase =
-supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
 )
 
 async function addChild(){
 
-const name =
-document.getElementById("child_name").value
+const name=document.getElementById("child_name").value
+const age=document.getElementById("child_age").value
+const gender=document.getElementById("child_gender").value
+const school=document.getElementById("child_school").value
+const dream=document.getElementById("child_dream").value
+const story=document.getElementById("child_story").value
+const needs=document.getElementById("child_needs").value
 
-const age =
-document.getElementById("child_age").value
+const photo=document.getElementById("child_photo").files[0]
 
-const gender =
-document.getElementById("child_gender").value
+let photoURL=""
 
-const school =
-document.getElementById("child_school").value
+if(photo){
 
-const dream =
-document.getElementById("child_dream").value
+const fileName=Date.now()+photo.name
 
-const story =
-document.getElementById("child_story").value
+await supabaseClient
+.storage
+.from("media")
+.upload(fileName,photo)
 
-const needs =
-document.getElementById("child_needs").value
+photoURL=
+"https://plrzyhtkosbgztpaudoz.supabase.co/storage/v1/object/public/media/"+fileName
 
-await supabase
+}
+
+await supabaseClient
 .from("children")
 .insert([
-{
-name,
-age,
-gender,
-school,
-dream,
-story,
-needs
-}
+{name,age,gender,school,dream,story,needs,photo:photoURL}
 ])
 
 alert("Child added successfully")
@@ -53,19 +43,13 @@ alert("Child added successfully")
 
 async function addProgram(){
 
-const title =
-document.getElementById("program_title").value
+const title=document.getElementById("program_title").value
+const description=document.getElementById("program_desc").value
 
-const description =
-document.getElementById("program_desc").value
-
-await supabase
+await supabaseClient
 .from("programs")
 .insert([
-{
-title,
-description
-}
+{title,description}
 ])
 
 alert("Program added")
@@ -74,30 +58,23 @@ alert("Program added")
 
 async function uploadGallery(){
 
-const file =
-document.getElementById("gallery_file").files[0]
+const file=document.getElementById("gallery_file").files[0]
+const caption=document.getElementById("gallery_caption").value
 
-const caption =
-document.getElementById("gallery_caption").value
+const fileName=Date.now()+file.name
 
-const fileName =
-Date.now() + file.name
-
-await supabase
+await supabaseClient
 .storage
 .from("media")
 .upload(fileName,file)
 
-const url =
-"https://plrzyhtkosbgztpaudoz.supabase.co/storage/v1/object/public/media/" + fileName
+const url=
+"https://plrzyhtkosbgztpaudoz.supabase.co/storage/v1/object/public/media/"+fileName
 
-await supabase
+await supabaseClient
 .from("gallery")
 .insert([
-{
-image:url,
-caption
-}
+{image:url,caption}
 ])
 
 alert("Gallery uploaded")
@@ -106,68 +83,33 @@ alert("Gallery uploaded")
 
 async function addEvent(){
 
-const title =
-document.getElementById("event_title").value
+const title=document.getElementById("event_title").value
+const description=document.getElementById("event_desc").value
 
-const description =
-document.getElementById("event_desc").value
+const file=document.getElementById("event_media").files[0]
 
-const file =
-document.getElementById("event_media").files[0]
+let url=""
 
-const fileName =
-Date.now() + file.name
+if(file){
 
-await supabase
+const fileName=Date.now()+file.name
+
+await supabaseClient
 .storage
 .from("media")
 .upload(fileName,file)
 
-const url =
-"https://plrzyhtkosbgztpaudoz.supabase.co/storage/v1/object/public/media/" + fileName
+url=
+"https://plrzyhtkosbgztpaudoz.supabase.co/storage/v1/object/public/media/"+fileName
 
-await supabase
+}
+
+await supabaseClient
 .from("events")
 .insert([
-{
-title,
-description,
-media:url
-}
+{title,description,media:url}
 ])
 
 alert("Event added")
 
 }
-
-async function uploadDocument(){
-
-const file =
-document.getElementById("doc_file").files[0]
-
-const title =
-document.getElementById("doc_title").value
-
-const fileName =
-Date.now() + file.name
-
-await supabase
-.storage
-.from("media")
-.upload(fileName,file)
-
-const url =
-"https://plrzyhtkosbgztpaudoz.supabase.co/storage/v1/object/public/media/" + fileName
-
-await supabase
-.from("documents")
-.insert([
-{
-title,
-file:url
-}
-])
-
-alert("Document uploaded")
-
-  }
