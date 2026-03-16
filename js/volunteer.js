@@ -1,49 +1,22 @@
-const SUPABASE_URL =
-"https://plrzyhtkosbgztpaudoz.supabase.co"
-
-const SUPABASE_KEY =
+const supabaseClient = supabase.createClient(
+"https://plrzyhtkosbgztpaudoz.supabase.co",
 "sb_publishable_iCAQVtvq6NqndBcS2ktKQA_im69KCae"
-
-const supabaseClient =
-supabase.createClient(
-SUPABASE_URL,
-SUPABASE_KEY
 )
 
 async function registerVolunteer(){
 
-const name =
-document.getElementById("vname").value
+const name=document.getElementById("name").value
+const email=document.getElementById("email").value
+const phone=document.getElementById("phone").value
+const country=document.getElementById("country").value
+const message=document.getElementById("message").value
 
-const phone =
-document.getElementById("vphone").value
-
-const email =
-document.getElementById("vemail").value
-
-const message =
-document.getElementById("vmessage").value
-
-const { data, error } =
 await supabaseClient
 .from("volunteers")
 .insert([
-{
-name:name,
-phone:phone,
-email:email,
-message:message
-}
+{name,email,phone,country,message}
 ])
-
-if(error){
-
-alert("Something went wrong")
-
-}else{
 
 alert("Thank you for volunteering!")
 
 }
-
-  }
