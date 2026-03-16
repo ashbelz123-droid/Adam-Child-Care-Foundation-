@@ -1,27 +1,28 @@
-const supabase = supabase.createClient(
+const supabaseClient = supabase.createClient(
 "https://plrzyhtkosbgztpaudoz.supabase.co",
-"YOUR_PUBLIC_KEY"
+"sb_publishable_iCAQVtvq6NqndBcS2ktKQA_im69KCae"
 )
 
 async function loadChildren(){
 
-const {data} = await supabase
+const {data} = await supabaseClient
 .from("children")
 .select("*")
 
-const container =
-document.getElementById("childrenContainer")
+const container=document.getElementById("childrenContainer")
 
-data.forEach(child => {
+container.innerHTML=""
 
-const card = document.createElement("div")
+data.forEach(child=>{
 
-card.className = "child-card"
+const card=document.createElement("div")
 
-card.innerHTML = `
+card.className="child-card"
 
-<h3>${child.name}</h3><p><strong>Age:</strong> ${child.age}</p><p><strong>School:</strong> ${child.school}</p><p><strong>Dream:</strong> ${child.dream}</p><p>${child.story}</p><button onclick="sponsorChild('${child.name}')">
-Sponsor This Child
+card.innerHTML=`
+
+<img src="${child.photo}" class="child-photo"><h3>${child.name}</h3><p><b>Age:</b> ${child.age}</p><p><b>School:</b> ${child.school}</p><p><b>Dream:</b> ${child.dream}</p><p>${child.story}</p><button onclick="sponsorChild('${child.name}')">
+Sponsor Child
 </button>`
 
 container.appendChild(card)
@@ -33,7 +34,7 @@ container.appendChild(card)
 function sponsorChild(name){
 
 window.open(
-"https://wa.me/256761544014?text=Hello I want to sponsor "+name
+"https://wa.me/256761544014?text=Hello I would like to sponsor "+name
 )
 
 }
