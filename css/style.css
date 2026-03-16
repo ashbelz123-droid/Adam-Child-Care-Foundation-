@@ -289,3 +289,88 @@ transition:0.4s;
 .child-card:hover{
 transform:scale(1.05);
   }
+/* FLOATING ANIMATION */
+
+@keyframes float {
+
+0% {transform:translateY(0px);}
+50% {transform:translateY(-10px);}
+100% {transform:translateY(0px);}
+
+}
+
+/* FLOATING CARDS */
+
+.card,
+.child-card{
+
+animation:float 6s ease-in-out infinite;
+
+}
+
+/* HERO BACKGROUND MOVE */
+
+.hero{
+
+background-size:cover;
+animation:heroMove 20s linear infinite;
+
+}
+
+@keyframes heroMove{
+
+0%{background-position:center;}
+50%{background-position:top;}
+100%{background-position:center;}
+
+}
+
+/* SCROLL ANIMATION */
+
+.fade-in{
+
+opacity:0;
+transform:translateY(40px);
+transition:all 1s ease;
+
+}
+
+.fade-in.show{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+/* FLOATING DONATE BUTTON */
+
+.donate-float{
+
+position:fixed;
+bottom:90px;
+right:20px;
+
+background:#ff6600;
+color:white;
+
+padding:15px 18px;
+
+border-radius:30px;
+
+font-weight:bold;
+
+box-shadow:0 6px 20px rgba(0,0,0,0.3);
+
+cursor:pointer;
+
+z-index:999;
+
+animation:float 4s ease-in-out infinite;
+
+}
+
+.donate-float:hover{
+
+background:#ff4400;
+
+  }
