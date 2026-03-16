@@ -1,19 +1,30 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Gallery | Adam Child Care Foundation Uganda Ltd</title><link rel="stylesheet" href="css/style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script></head><body><header><div class="header-container"><img src="images/logo.png" class="logo"><h1>Adam Child Care Foundation Uganda Ltd</h1><nav><a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="children.html">Children</a>
-<a href="programs.html">Programs</a>
-<a href="gallery.html">Gallery</a>
-<a href="volunteer.html">Volunteer</a>
-<a href="contact.html">Contact</a>
+<!DOCTYPE html><html><head><title>Gallery</title><link rel="stylesheet" href="css/style.css"><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script></head><body><header><h1>Our Activities</h1></header><section class="gallery-grid" id="gallery"></section><script>
 
-</nav></div></header><section class="hero"><h2>Our Gallery</h2><p>Here are some moments from our activities,
-community outreach programs, and events
-supporting vulnerable children.
+const supabase = supabase.createClient(
+"https://plrzyhtkosbgztpaudoz.supabase.co",
+"sb_publishable_iCAQVtvq6NqndBcS2ktKQA_im69KCae"
+)
 
-These photos show the impact made possible
-through the kindness of volunteers and supporters.
+async function loadGallery(){
 
-</p></section><section class="gallery-preview"><div id="gallery-preview" class="grid"></div></section><footer><h3>Adam Child Care Foundation Uganda Ltd</h3><p>Bwikomba II, Mugiti Sub-County</p><p>Budaka District, Uganda</p><p>Email: adamcarefoundation@gmail.com</p><p>WhatsApp: +256 761 544014</p><p>Help Line: +256 741 600425</p></footer><a href="https://wa.me/256761544014" class="whatsapp">Chat With Us
+const {data} = await supabase
+.from("gallery")
+.select("*")
 
-</a><script src="js/main.js"></script></body></html>
+const container=document.getElementById("gallery")
+
+data.forEach(item=>{
+
+const img=document.createElement("img")
+
+img.src=item.image
+
+container.appendChild(img)
+
+})
+
+}
+
+loadGallery()
+
+</script></body></html>
