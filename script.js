@@ -110,3 +110,24 @@ window.open("https://wa.me/256761544014?text=Hello I would like to support a chi
 loadChildren()
 loadPrograms()
 loadGallery()
+let slideIndex = 0;
+
+function slideEvents(){
+
+const slides = document.getElementById("eventSlides")
+
+if(!slides) return
+
+const total = slides.children.length
+
+slideIndex++
+
+if(slideIndex >= total){
+slideIndex = 0
+}
+
+slides.style.transform = "translateX(-${slideIndex * 100}%)"
+
+}
+
+setInterval(slideEvents,4000)
